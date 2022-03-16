@@ -62,8 +62,8 @@ const checkWinner = () => {
     boardConditions[4].every(playerOneWins) || boardConditions[4].every(playerTwoWins) ||
     boardConditions[5].every(playerOneWins) || boardConditions[5].every(playerTwoWins) ||
     boardConditions[6].every(playerOneWins) || boardConditions[6].every(playerTwoWins) ||
-    boardConditions[7].every(playerOneWins || boardConditions[7].every(playerTwoWins))
-  ) {
+    boardConditions[7].every(playerOneWins) || boardConditions[7].every(playerTwoWins))
+   {
     turnText.innerText = `${currentPlayer} is the winner!`;
     cells.forEach(cell => {
         cell.style.pointerEvents = 'none';
