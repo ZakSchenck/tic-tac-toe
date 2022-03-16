@@ -31,59 +31,60 @@ cell.forEach((element) => {
       turnText.innerText = "It's player two's turn";
     }
 
-    e.target.style.pointerEvents = 'none';
-    playsCount++
+    e.target.style.pointerEvents = "none";
+    playsCount++;
     checkWinner();
   });
 });
 
 const restartGame = () => {
-    cell.forEach(cells => {
-        cells.innerText = '';
-        cells.style.pointerEvents = 'auto';
-        turnText.innerText = 'Ready? Start!';
-        currentPlayer = player2;
-        cells.classList.remove('X');
-        cells.classList.remove('O');
-    })
-}
+  cell.forEach((cells) => {
+    cells.innerText = "";
+    cells.style.pointerEvents = "auto";
+    turnText.innerText = "Ready? Start!";
+    currentPlayer = player2;
+    cells.classList.remove("X");
+    cells.classList.remove("O");
+  });
+};
 
-restartButton.addEventListener('click', restartGame)
-
+restartButton.addEventListener("click", restartGame);
 
 const checkWinner = () => {
-    let playerOneWins = (currentValue) => currentValue.classList.contains('X');
-    let playerTwoWins = (currentValue) => currentValue.classList.contains('O');
-    const winArray1 = boardConditions[0]
-    const winArray2 = boardConditions[1]
-    const winArray3 = boardConditions[2]
-    const winArray4 = boardConditions[3]
-    const winArray5 = boardConditions[4]
-    const winArray6 = boardConditions[5]
-    const winArray7 = boardConditions[6]
-    const winArray8 = boardConditions[7];
+  let playerOneWins = (currentValue) => currentValue.classList.contains("X");
+  let playerTwoWins = (currentValue) => currentValue.classList.contains("O");
+  const winArray1 = boardConditions[0];
+  const winArray2 = boardConditions[1];
+  const winArray3 = boardConditions[2];
+  const winArray4 = boardConditions[3];
+  const winArray5 = boardConditions[4];
+  const winArray6 = boardConditions[5];
+  const winArray7 = boardConditions[6];
+  const winArray8 = boardConditions[7];
 
-    if (winArray1.every(playerOneWins) || winArray1.every(playerTwoWins) ||
+  if (
+    winArray1.every(playerOneWins) || winArray1.every(playerTwoWins) ||
     winArray2.every(playerOneWins) || winArray2.every(playerTwoWins) ||
     winArray3.every(playerOneWins) || winArray3.every(playerTwoWins) ||
     winArray4.every(playerOneWins) || winArray4.every(playerTwoWins) ||
     winArray5.every(playerOneWins) || winArray5.every(playerTwoWins) ||
     winArray6.every(playerOneWins) || winArray6.every(playerTwoWins) ||
     winArray7.every(playerOneWins) || winArray7.every(playerTwoWins) ||
-    winArray8.every(playerOneWins || winArray8.every(playerTwoWins))) {
-        turnText.innerText = `${currentPlayer} is the winner!`;
-        gameContainer.style.pointerEvents = 'none';
+    winArray8.every(playerOneWins || winArray8.every(playerTwoWins))
+  ) {
+    turnText.innerText = `${currentPlayer} is the winner!`;
+    gameContainer.style.pointerEvents = "none";
+  } else {
+    if (playsCount === 9) {
+      turnText.innerText = "It's a draw! Press restart";
     }
-    else if (playsCount === 9 ) {
-        turnText.innerText = "It's a draw! Press restart"
-    }
+  }
 };
 
 function play() {
-    var audio = document.getElementById("audio");
-    audio.play();
-  }
-
+  var audio = document.getElementById("audio");
+  audio.play();
+}
 
 // cell.forEach(element => {
 //     element.addEventListener('click', function () {
@@ -158,4 +159,3 @@ function play() {
 //     console.log(g)
 
 // };
-
