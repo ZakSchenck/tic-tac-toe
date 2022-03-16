@@ -1,23 +1,23 @@
-const cell = document.querySelectorAll(".cell");
-player1 = "X";
-player2 = "O";
+const cells = document.querySelectorAll(".cell");
+let player1 = "X";
+let player2 = "O";
 let currentPlayer = player2;
 let turnText = document.getElementById("turn-text");
 const restartButton = document.querySelector(".restart");
 let playsCount = 0;
 let boardConditions = [
-  [cell[0], cell[1], cell[2]],
-  [cell[3], cell[4], cell[5]],
-  [cell[6], cell[7], cell[8]],
-  [cell[0], cell[3], cell[6]],
-  [cell[1], cell[4], cell[7]],
-  [cell[2], cell[5], cell[8]],
-  [cell[0], cell[4], cell[8]],
-  [cell[2], cell[4], cell[6]],
+  [cells[0], cells[1], cells[2]],
+  [cells[3], cells[4], cells[5]],
+  [cells[6], cells[7], cells[8]],
+  [cells[0], cells[3], cells[6]],
+  [cells[1], cells[4], cells[7]],
+  [cells[2], cells[5], cells[8]],
+  [cells[0], cells[4], cells[8]],
+  [cells[2], cells[4], cells[6]],
 ];
 const gameContainer = document.querySelector(".game-container");
 
-cell.forEach((element) => {
+cells.forEach((element) => {
   element.addEventListener("click", (e) => {
     if (currentPlayer === player1) {
       e.target.classList.add("O");
@@ -38,13 +38,14 @@ cell.forEach((element) => {
 });
 
 const restartGame = () => {
-  cell.forEach((cells) => {
-    cells.innerText = "";
-    cells.style.pointerEvents = "auto";
+  cells.forEach(cell => {
+    cell.innerText = "";
+    cell.style.pointerEvents = "auto";
     turnText.innerText = "Ready? Start!";
     currentPlayer = player2;
-    cells.classList.remove("X");
-    cells.classList.remove("O");
+    cell.classList.remove("X");
+    cell.classList.remove("O");
+    playsCount = 0;
   });
 };
 
@@ -53,27 +54,20 @@ restartButton.addEventListener("click", restartGame);
 const checkWinner = () => {
   let playerOneWins = (currentValue) => currentValue.classList.contains("X");
   let playerTwoWins = (currentValue) => currentValue.classList.contains("O");
-  const winArray1 = boardConditions[0];
-  const winArray2 = boardConditions[1];
-  const winArray3 = boardConditions[2];
-  const winArray4 = boardConditions[3];
-  const winArray5 = boardConditions[4];
-  const winArray6 = boardConditions[5];
-  const winArray7 = boardConditions[6];
-  const winArray8 = boardConditions[7];
-
   if (
-    winArray1.every(playerOneWins) || winArray1.every(playerTwoWins) ||
-    winArray2.every(playerOneWins) || winArray2.every(playerTwoWins) ||
-    winArray3.every(playerOneWins) || winArray3.every(playerTwoWins) ||
-    winArray4.every(playerOneWins) || winArray4.every(playerTwoWins) ||
-    winArray5.every(playerOneWins) || winArray5.every(playerTwoWins) ||
-    winArray6.every(playerOneWins) || winArray6.every(playerTwoWins) ||
-    winArray7.every(playerOneWins) || winArray7.every(playerTwoWins) ||
-    winArray8.every(playerOneWins || winArray8.every(playerTwoWins))
+    boardConditions[0].every(playerOneWins) || boardConditions[0].every(playerTwoWins) ||
+    boardConditions[1].every(playerOneWins) || boardConditions[1].every(playerTwoWins) ||
+    boardConditions[2].every(playerOneWins) || boardConditions[2].every(playerTwoWins) ||
+    boardConditions[3].every(playerOneWins) || boardConditions[3].every(playerTwoWins) ||
+    boardConditions[4].every(playerOneWins) || boardConditions[4].every(playerTwoWins) ||
+    boardConditions[5].every(playerOneWins) || boardConditions[5].every(playerTwoWins) ||
+    boardConditions[6].every(playerOneWins) || boardConditions[6].every(playerTwoWins) ||
+    boardConditions[7].every(playerOneWins || boardConditions[7].every(playerTwoWins))
   ) {
     turnText.innerText = `${currentPlayer} is the winner!`;
-    gameContainer.style.pointerEvents = "none";
+    cells.forEach(cell => {
+        cell.style.pointerEvents = 'none';
+    })
   } else {
     if (playsCount === 9) {
       turnText.innerText = "It's a draw! Press restart";

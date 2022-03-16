@@ -1,13 +1,16 @@
 * {
     font-family: 'Poppins', sans-serif;
     background-color: #303030;
+    box-sizing: border-box;
 }
 
 /* universal styling */
 
 h1, h2 {
     color: white;
-    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+
 }
 
 button {
@@ -54,11 +57,38 @@ button:hover {
     justify-content: center;
     color: lightskyblue;
     font-size: 120px;
-    border-radius: 10px;
-    background-color: #404040;
 }
+
+.cell:nth-child(1) {
+    border-left: none;
+    border-top: none;
+} 
+.cell:nth-child(2) {
+    border-top: none;
+} 
+.cell:nth-child(3) {
+    border-top: none;
+    border-right: none;
+} 
+.cell:nth-child(4) {
+    border-left: none;
+} 
+.cell:nth-child(6) {
+    border-right: none;
+} 
+.cell:nth-child(7) {
+    border-left: none;
+    border-bottom: none;
+} 
+.cell:nth-child(8) {
+    border-bottom: none;
+} 
+.cell:nth-child(9) {
+    border-bottom: none;
+    border-right: none;
+} 
 
 .cell:hover {
     cursor: pointer;
-    background-color:#ff6b6b ;
+    background-color:#b14848 ;
 }
