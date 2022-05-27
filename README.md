@@ -1,5 +1,5 @@
 # Tic Tac Toe
-Livd site: https://zakschenck.github.io/tic-tac-toe/
+Live site: https://zakschenck.github.io/tic-tac-toe/
 
 ## Technologies used:
 • HTML5 <br />
